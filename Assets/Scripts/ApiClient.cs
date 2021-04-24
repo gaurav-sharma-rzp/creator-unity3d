@@ -8,6 +8,7 @@ using System;
 public class ApiClient 
 {
     public static readonly string GET = "GET";
+    public static readonly string POST = "POST";
     public Response Call(string method, string url,  string body) {
         var request = new UnityWebRequest (url, method);
         byte[] bodyRaw = Encoding.UTF8.GetBytes(body);

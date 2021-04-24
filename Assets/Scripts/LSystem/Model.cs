@@ -19,7 +19,7 @@ namespace LSystem
 
     [Serializable]
     public class ExpandResponse {
-            public List<string> result;
+        public List<string> result;
     }
 
     [Serializable]
