@@ -6,8 +6,8 @@ namespace LSystem
     public class Api 
     {
         public static readonly string baseUrl = "http://127.0.0.1:3000";
-        private ApiClient client = new ApiClient();
-        public string Status() {
+        private static ApiClient client = new ApiClient();
+        public static string Status() {
             var endpoint = "/status";
             Response res = client.Call(ApiClient.GET, baseUrl+endpoint, "{}");
             if (res.success && res.code == 200) {
@@ -18,7 +18,7 @@ namespace LSystem
             return "not ok";
         }
 
-        public List<string> ExpandGrammar(Grammar grammar, int steps){
+        public static List<string> ExpandGrammar(Grammar grammar, int steps){
             var endpoint = "/lsystem/expand";
             ExpandRequest request = new ExpandRequest();
             request.grammar = grammar;

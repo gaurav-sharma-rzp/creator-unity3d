@@ -12,45 +12,42 @@ public class test : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var api = new LSystem.Api();
-        var res = api.Status();
-        Debug.Log(res);
+        // var api = new LSystem.Api();
+        // var res = api.Status();
+        // Debug.Log(res);
 
-        var grammar = new LSystem.Grammar();
-        List<string> initiator = new List<string>();
-        initiator.Add("A");
-        List<string> alphabet = new List<string>();
-        alphabet.Add("A");
-        alphabet.Add("B");
+        // var grammar = new LSystem.Grammar();
+        // List<string> initiator = new List<string>();
+        // initiator.Add("A");
+        // List<string> alphabet = new List<string>();
+        // alphabet.Add("A");
+        // alphabet.Add("B");
 
-        List<string> ruleA = new List<string>();
-        ruleA.Add("B");
-        ruleA.Add("B");
-        ruleA.Add("A");
-        List<string> ruleB = new List<string>();
-        ruleB.Add("A");
-        ruleB.Add("B");
-        Dictionary<string,List<string>> rules = new Dictionary<string,List<string>>();
-        rules.Add("A",ruleA);
-        rules.Add("B",ruleB);
+        // List<string> ruleA = new List<string>();
+        // ruleA.Add("B");
+        // ruleA.Add("B");
+        // ruleA.Add("A");
+        // List<string> ruleB = new List<string>();
+        // ruleB.Add("A");
+        // ruleB.Add("B");
+        // Dictionary<string,List<string>> rules = new Dictionary<string,List<string>>();
+        // rules.Add("A",ruleA);
+        // rules.Add("B",ruleB);
 
-        grammar.initiator = initiator;
-        grammar.alphabet = alphabet;
-        grammar.rules = rules;
+        // grammar.initiator = initiator;
+        // grammar.alphabet = alphabet;
+        // grammar.rules = rules;
 
-        // var rulesString = MiniJSON.Json.Serialize(rules);
-        // grammar.rules = "{\n            \"A\": [\n                \"B\",\n                \"B\",\n                \"A\"\n            ],\n            \"B\": [\n                \"A\",\n                \"B\"\n            ]\n        }\n    }";
+        // var resList = api.ExpandGrammar(grammar, 10);
 
-        var resList = api.ExpandGrammar(grammar, 10);
-
-        if (resList != null) {
-            Debug.Log("success");
-            foreach (var str in resList) {
-                // Debug.Log(str);
-            }
-        }else {
-            Debug.Log("failed");
-        }
+        // if (resList != null) {
+        //     Debug.Log("success");
+        //     foreach (var str in resList) {
+        //         // Debug.Log(str);
+        //     }
+        // }else {
+        //     Debug.Log("failed");
+        // }
         
     }
 
