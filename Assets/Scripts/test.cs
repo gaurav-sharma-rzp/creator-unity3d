@@ -28,8 +28,8 @@ public class test : MonoBehaviour
         ruleA.Add("B");
         ruleA.Add("A");
         List<string> ruleB = new List<string>();
-        ruleA.Add("A");
-        ruleA.Add("B");
+        ruleB.Add("A");
+        ruleB.Add("B");
         Dictionary<string,List<string>> rules = new Dictionary<string,List<string>>();
         rules.Add("A",ruleA);
         rules.Add("B",ruleB);
@@ -38,10 +38,15 @@ public class test : MonoBehaviour
         grammar.alphabet = alphabet;
         grammar.rules = rules;
 
+        // var rulesString = MiniJSON.Json.Serialize(rules);
+        // grammar.rules = "{\n            \"A\": [\n                \"B\",\n                \"B\",\n                \"A\"\n            ],\n            \"B\": [\n                \"A\",\n                \"B\"\n            ]\n        }\n    }";
+
         var resList = api.ExpandGrammar(grammar, 10);
+
         if (resList != null) {
+            Debug.Log("success");
             foreach (var str in resList) {
-                Debug.Log(str);
+                // Debug.Log(str);
             }
         }else {
             Debug.Log("failed");
