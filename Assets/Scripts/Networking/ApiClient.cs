@@ -33,8 +33,6 @@ public class ApiClient
             response.body = request.downloadHandler.text;
         }
         response.error = request.error;
-        // Debug.Log("request complete");
-        // Debug.Log(response);
         return response;
     }
 }

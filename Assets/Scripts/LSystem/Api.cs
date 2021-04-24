@@ -24,17 +24,11 @@ namespace LSystem
             request.grammar = grammar;
             request.steps = steps;
             var body = request.json();
-            // var body = MiniJSON.Json.Serialize(bodyAsDict);
             Debug.Log("serialized: " + body);
             Response res = client.Call(ApiClient.POST, baseUrl+endpoint, body);
-            // Debug.Log(res.success);
-            // Debug.Log(res.error);
-            // Debug.Log(body);
             Debug.Log(res.body);
             if (res.success && res.code == 200) {
                 ExpandResponse response = JsonUtility.FromJson<ExpandResponse>(res.body);
-                // Debug.Log(response);
-                // Debug.Log(response.result);
                 return response.result;
             }
             
