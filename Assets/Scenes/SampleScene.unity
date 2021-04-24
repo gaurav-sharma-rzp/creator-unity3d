@@ -273,7 +273,7 @@ MonoBehaviour:
   steps: 5
   mapWidth: 100
   mapHeight: 100
-  noiseScale: 5
+  noiseScale: 10
 --- !u!4 &475008700
 Transform:
   m_ObjectHideFlags: 0
@@ -504,6 +504,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textureRender: {fileID: 1874229771}
+  height: 100
+  width: 100
+  noiseScale: 3
 --- !u!4 &1887405096
 Transform:
   m_ObjectHideFlags: 0
