@@ -13,6 +13,7 @@ namespace LSystem
 
         public int steps;
 
+        public string result;
         public int mapWidth;
         public int mapHeight;
         public int noiseScale;
