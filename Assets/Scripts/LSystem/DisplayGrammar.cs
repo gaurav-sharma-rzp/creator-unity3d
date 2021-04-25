@@ -128,6 +128,171 @@ public class DisplayGrammar : MonoBehaviour {
         foreach (var s in grammarSymbol){
             
             switch (s){
+                case "G":
+                case "F":
+                    for(int i=0; i< forwardLength; ++i){
+                        switch(direction) { 
+                            case "T": y--;
+                            break;
+                            case "B": y++;
+                            break;
+                            case "L": x--;
+                            break;
+                            case "R": x++;
+                            break;
+                        }
+                        screenColourMap [x * width + y] = Color.black;
+                    }
+                    
+                break;
+                case "+":
+                    switch(direction) { 
+                        case "T": direction="L";
+                        break;
+                        case "B": direction="R";
+                        break;
+                        case "L": direction="B";
+                        break;
+                        case "R": direction="T";
+                        break;
+                    }
+                break;
+                case "-":
+                    switch(direction) { 
+                        case "T": direction="R";
+                        break;
+                        case "B": direction="L";
+                        break;
+                        case "L": direction="T";
+                        break;
+                        case "R": direction="B";
+                        break;
+                    }
+                break;
+                
+                default:
+                Debug.Log("Unsupported operation");
+                break;
+            }
+            // Debug.Log(s + " " + direction + " " + x + " " + y);
+            yield return null;
+        }
+         Debug.Log("break");
+        yield break;
+    }
+
+     public IEnumerator drawFractalPlant(){
+        int x = startX;
+        int y = startY;
+        string direction = "R";
+        foreach (var s in grammarSymbol){
+            
+            switch (s){
+                case "G":
+                case "F":
+                    for(int i=0; i< forwardLength; ++i){
+                        switch(direction) { 
+                            case "T": y--;
+                            break;
+                            case "B": y++;
+                            break;
+                            case "L": x--;
+                            break;
+                            case "R": x++;
+                            break;
+                        }
+                        screenColourMap [x * width + y] = Color.black;
+                    }
+                    
+                break;
+                case "+":
+                    switch(direction) { 
+                        case "T": direction="L";
+                        break;
+                        case "B": direction="R";
+                        break;
+                        case "L": direction="B";
+                        break;
+                        case "R": direction="T";
+                        break;
+                    }
+                break;
+                case "-":
+                    switch(direction) { 
+                        case "T": direction="R";
+                        break;
+                        case "B": direction="L";
+                        break;
+                        case "L": direction="T";
+                        break;
+                        case "R": direction="B";
+                        break;
+                    }
+                break;
+                
+                default:
+                Debug.Log("Unsupported operation");
+                break;
+            }
+            // Debug.Log(s + " " + direction + " " + x + " " + y);
+            yield return null;
+        }
+         Debug.Log("break");
+        yield break;
+    }
+
+    public void updateTexture(){
+        texture = new Texture2D (width, height);
+        texture.SetPixels (screenColourMap);
+		texture.Apply ();
+		textureRender.sharedMaterial.mainTexture = texture;
+    }
+
+
+    public void DrawNoiseMap(float[,] noiseMap) {
+		int width = noiseMap.GetLength (0);
+		int height = noiseMap.GetLength (1);
+
+		Texture2D texture = new Texture2D (width, height);
+
+		Color[] colourMap = new Color[width * height];
+		for (int y = 0; y < height; y++) {
+			for (int x = 0; x < width; x++) {
+                // Color curColor = Color.white;
+                // if (x>=5 && x <=5 && y>=5 && y<=5) {
+                    // curColor = Color.black;
+                // }
+                // // if (x>=6 && x <=8 && y>=6 && y<=6) {
+                // //     curColor = Color.black;
+                // // }
+                // colourMap [y * width + x] = curColor;
+				colourMap [y * width + x] = Color.Lerp (Color.black, Color.white, noiseMap [x, y]);
+			}
+		}
+		texture.SetPixels (colourMap);
+		texture.Apply ();
+
+		textureRender.sharedMaterial.mainTexture = texture;
+		// textureRender.transform.localScale = new Vector3 (width, 1, height);
+	}
+	
+    public void Reset(){
+        Init();
+    }
+
+    public void Draw(){
+        Init();
+        drawGrammarComplete();
+         updateFrame();
+    }
+
+    public void drawGrammarComplete(){
+        int x = startX;
+        int y = startY;
+        string direction = "R";
+        foreach (var s in grammarSymbol){
+            
+            switch (s){
                 case "F":
                     for(int i=0; i< forwardLength; ++i){
                         switch(direction) { 
@@ -174,101 +339,10 @@ public class DisplayGrammar : MonoBehaviour {
                 break;
             }
             Debug.Log(s + " " + direction + " " + x + " " + y);
-            yield return null;
         }
          Debug.Log("break");
-        yield break;
-    }
-
-
-    // public IEnumerator updateColour(){
-    //     for (int y = 0; y < height; y++) {
-	// 		for (int x = 0; x < width; x++) {
-	// 			screenColourMap [y * width + x] = Color.Lerp (Color.black, Color.white, noiseMap [x, y]);
-    //             if(x==width-1){
-    //                 yield return null;
-    //             }
-	// 		}
-	// 	}
-    // }
-
-    public void updateTexture(){
-        Texture2D texture = new Texture2D (width, height);
-        texture.SetPixels (screenColourMap);
-		texture.Apply ();
-		textureRender.sharedMaterial.mainTexture = texture;
-    }
-
-
-    public void DrawNoiseMap(float[,] noiseMap) {
-		int width = noiseMap.GetLength (0);
-		int height = noiseMap.GetLength (1);
-
-		Texture2D texture = new Texture2D (width, height);
-
-		Color[] colourMap = new Color[width * height];
-		for (int y = 0; y < height; y++) {
-			for (int x = 0; x < width; x++) {
-                // Color curColor = Color.white;
-                // if (x>=5 && x <=5 && y>=5 && y<=5) {
-                    // curColor = Color.black;
-                // }
-                // // if (x>=6 && x <=8 && y>=6 && y<=6) {
-                // //     curColor = Color.black;
-                // // }
-                // colourMap [y * width + x] = curColor;
-				colourMap [y * width + x] = Color.Lerp (Color.black, Color.white, noiseMap [x, y]);
-			}
-		}
-		texture.SetPixels (colourMap);
-		texture.Apply ();
-
-		textureRender.sharedMaterial.mainTexture = texture;
-		// textureRender.transform.localScale = new Vector3 (width, 1, height);
-	}
-	
-    public void Reset(){
-        Init();
-    }
-
-    public void Draw(){
-        Init();
-        drawCoroutine();
-    }
-
-    public void drawCoroutine(){
-        int i = 0;
-        while(i<1000){
-            drawGrammar();
-            i++;
-        }
-        updateFrame();
         return;
     }
-    // Grammar generator code 
-
-    // public void wait(int milliseconds)
-    // {
-    //     var timer1 = new System.Windows.Forms.Timer();
-    //     if (milliseconds == 0 || milliseconds < 0) return;
-
-    //     // Console.WriteLine("start wait timer");
-    //     timer1.Interval = milliseconds;
-    //     timer1.Enabled  = true;
-    //     timer1.Start();
-
-    //     timer1.Tick += (s, e) =>
-    //     {
-    //         timer1.Enabled = false;
-    //         timer1.Stop();
-    //         // Console.WriteLine("stop wait timer");
-    //     };
-
-    //     while (timer1.Enabled)
-    //     {
-    //         Application.DoEvents();
-    //     }
-    // }
 
     public void Generate(){
         var grammar = new Grammar();
