@@ -271,6 +271,7 @@ MonoBehaviour:
   - alphabet: B
     transformation: BA
   steps: 5
+  result: 
   mapWidth: 100
   mapHeight: 100
   noiseScale: 10
@@ -504,9 +505,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textureRender: {fileID: 1874229771}
-  height: 100
-  width: 100
+  drawMode: 1
+  height: 1000
+  width: 1000
   noiseScale: 3
+  startX: 500
+  startY: 500
+  forwardLength: 10
+  grammarString: 
+  initiator: F
+  alphabet: FG+-
+  rules:
+  - alphabet: F
+    transformation: F+G
+  - alphabet: G
+    transformation: F-G
+  steps: 10
 --- !u!4 &1887405096
 Transform:
   m_ObjectHideFlags: 0

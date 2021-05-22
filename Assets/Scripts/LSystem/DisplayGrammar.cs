@@ -258,14 +258,6 @@ public class DisplayGrammar : MonoBehaviour {
 		Color[] colourMap = new Color[width * height];
 		for (int y = 0; y < height; y++) {
 			for (int x = 0; x < width; x++) {
-                // Color curColor = Color.white;
-                // if (x>=5 && x <=5 && y>=5 && y<=5) {
-                    // curColor = Color.black;
-                // }
-                // // if (x>=6 && x <=8 && y>=6 && y<=6) {
-                // //     curColor = Color.black;
-                // // }
-                // colourMap [y * width + x] = curColor;
 				colourMap [y * width + x] = Color.Lerp (Color.black, Color.white, noiseMap [x, y]);
 			}
 		}
@@ -273,7 +265,6 @@ public class DisplayGrammar : MonoBehaviour {
 		texture.Apply ();
 
 		textureRender.sharedMaterial.mainTexture = texture;
-		// textureRender.transform.localScale = new Vector3 (width, 1, height);
 	}
 	
     public void Reset(){
