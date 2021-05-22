@@ -54,7 +54,7 @@ namespace Object3D
         public string status;
     }
 
-// Code for 
+// Concurrent Code for api requests
     //   public void DownloadFile(string url)
     //     {
     //         Debug.Log(filePath);
