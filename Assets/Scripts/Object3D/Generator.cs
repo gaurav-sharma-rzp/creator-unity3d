@@ -29,7 +29,8 @@ namespace Object3D
                     DestroyImmediate(trans.gameObject);
                 }
             }
-            var resGltf = Api.TestGltf();
+            var resGltf = Api.TestGltf(url);
+            Debug.Log(resGltf);
             File.WriteAllText(filePath, resGltf);
             GameObject model = Importer.LoadFromFile(filePath);
             model.transform.SetParent(wrapper.transform);

@@ -21,9 +21,9 @@ namespace Object3D
             return "not ok";
         }
 
-        public static string TestGltf() {
+        public static string TestGltf(string url) {
             var endpoint = "/gltf";
-            Response res = client.Call(ApiClient.GET, baseUrl+endpoint, "{}");
+            Response res = client.Call(ApiClient.GET, url, "{}");
             if (res.success && res.code == 200) {
                return res.body;
             }
