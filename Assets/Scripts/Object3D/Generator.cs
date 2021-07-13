@@ -31,13 +31,14 @@ namespace Object3D
             }
             var resGltf = Api.TestGltf(url);
             Debug.Log(resGltf);
+            Debug.Log(filePath);
             File.WriteAllText(filePath, resGltf);
             GameObject model = Importer.LoadFromFile(filePath);
             model.transform.SetParent(wrapper.transform);
         }
 
        
-        string filePath = "/Users/gauravsharma/Library/Application Support/DefaultCompany/Creator3D/Files/test.gltf";
+        string filePath = "/Users/gaurav.sharma/workspace/other/unity/creator-unity3d/Assets/Resources/test.gltf";
         GameObject wrapper;
         public string url = "http://127.0.0.1:3000/gltf";
 
